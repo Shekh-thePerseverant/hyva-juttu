@@ -1,0 +1,449 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Hyvä Juttu — Transforming every day shopping sustainably</title>
+<meta name="description" content="Hyvä Juttu: jute totes + W-Cut bio bags with a measurable circular model. Pilot with us to lead a plastic-free Nordics."/>
+<style>
+/* ===== Theme: light green · white · light blue ===== */
+:root{
+  --blue-50:#eef6ff; --blue-100:#e6f2ff; --blue-200:#cfe4ff; --blue-400:#74c0fc;
+  --green-50:#effdf4; --green-200:#c6f7e2; --green-400:#7ee0a3; --bottle:#0b7a49;
+  --ink:#0b1220; --muted:#586272; --line:#e5e7eb; --white:#fff;
+  --brandB:#74c0fc; --brandG:#7ee0a3;
+  --r:18px; --maxw:1180px; --shadow:0 1px 2px rgba(0,0,0,.05), 0 10px 30px rgba(0,0,0,.08);
+}
+*{box-sizing:border-box} html,body{margin:0;padding:0}
+body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;background:linear-gradient(180deg,var(--blue-50),#fff);color:var(--ink)}
+img{max-width:100%;display:block} a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px}
+section{padding:92px 0}
+h1{margin:.3rem 0 1rem;font-size:clamp(2.2rem,5vw,3.4rem);line-height:1.05}
+h2{margin:0 0 1rem;font-size:clamp(1.7rem,3.2vw,2.3rem)}
+h3{margin:.4rem 0 .5rem}
+p{margin:.35rem 0;color:var(--muted)}
+.small{font-size:.92rem} .muted{color:var(--muted)}
+.grid{display:grid;gap:22px} .g2{grid-template-columns:repeat(2,1fr)} .g3{grid-template-columns:repeat(3,1fr)}
+@media(max-width:920px){.g2,.g3{grid-template-columns:1fr}}
+.card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:1.15rem;box-shadow:var(--shadow);transition:transform .2s, box-shadow .2s}
+.card:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(0,0,0,.12)}
+.btn{display:inline-flex;align-items:center;gap:.55rem;border-radius:999px;padding:.9rem 1.2rem;border:1px solid var(--line);font-weight:800}
+.btn:hover{box-shadow:0 6px 20px rgba(0,0,0,.08);transform:translateY(-2px)}
+.primary{background:linear-gradient(90deg,var(--brandG),var(--brandB));border-color:transparent;color:#063}
+.ghost:hover{background:#f8fafc}
+.chip{display:inline-flex;align-items:center;gap:.35rem;background:linear-gradient(90deg,var(--blue-100),var(--green-200));color:#063;border-radius:999px;padding:.35rem .7rem;font-weight:800;font-size:.82rem}
+
+/* Header */
+header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.9);backdrop-filter:saturate(180%) blur(10px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:84px}
+.logoRow{display:flex;align-items:center;gap:.8rem}
+.siteName{font-style:italic;font-weight:1000;letter-spacing:.4px;
+  font-size:clamp(2rem,4.6vw,3rem);line-height:1;
+  background:linear-gradient(90deg,var(--brandG),var(--brandB));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  -webkit-text-stroke:1px rgba(0,0,0,.08); text-shadow:0 1px 0 rgba(255,255,255,.4)
+}
+.hook{color:var(--bottle);font-weight:700}
+.links{display:none;gap:1rem} .hamb{display:inline-flex;border:1px solid var(--line);border-radius:12px;padding:.5rem;background:#fff}
+@media(min-width:920px){.links{display:flex}.hamb{display:none}}
+.mobile{display:none} .mobile.open{display:block;border-top:1px solid var(--line)}
+.logo{width:48px;height:48px;border-radius:12px;border:2px solid rgba(0,0,0,.06);object-fit:cover}
+
+/* Hero */
+.hero{padding:118px 0}
+.device{border:1px solid var(--line);border-radius:22px;overflow:hidden;box-shadow:var(--shadow);position:relative;transform:translateY(var(--parallax,0px))}
+.floating{position:absolute;inset:auto 12px -16px auto;background:linear-gradient(90deg,var(--brandG),var(--brandB));padding:.4rem .7rem;border-radius:999px;color:#063;font-weight:800;font-size:.82rem}
+
+/* Animation */
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .7s, transform .7s}
+.reveal.visible{opacity:1;transform:none}
+
+/* How (graphical flow) */
+.how{background:linear-gradient(180deg,#fff,var(--green-50))}
+.howCanvas{position:relative;border-radius:22px;padding:24px;background:#fff;border:1px solid var(--line);box-shadow:var(--shadow);overflow:hidden}
+.howSvg{width:100%;height:300px}
+.runner{stroke:url(#gradRun);stroke-width:6;fill:none;stroke-dasharray:8 14;animation:dash 12s linear infinite}
+@keyframes dash{to{stroke-dashoffset:-800}}
+.node{position:absolute;display:flex;flex-direction:column;align-items:center;gap:.3rem}
+.node .dot{width:18px;height:18px;border-radius:50%;background:var(--brandG);box-shadow:0 2px 8px rgba(0,0,0,.1)}
+.node .lbl{font-weight:900}
+.badge{display:inline-block;background:linear-gradient(90deg,var(--brandG),var(--brandB));color:#053b2a;padding:.25rem .6rem;border-radius:999px;font-weight:900;font-size:.8rem}
+
+/* Products */
+.product img{aspect-ratio:4/3;object-fit:cover;border-radius:14px;transition:transform .25s}
+.product img:hover{transform:scale(1.03)}
+
+/* KPIs */
+.kpi{display:flex;flex-direction:column;align-items:flex-start}
+.kpi b{font-size:2rem}
+
+/* Poster */
+.poster{border:1px solid var(--line);border-radius:22px;overflow:hidden;box-shadow:var(--shadow);background:radial-gradient(600px 280px at 50% 55%, rgba(126,224,163,.15), transparent 60%), #0b2c1f}
+.poster h3{color:#fff;margin:0 0 .6rem}
+.legend{color:#f6f7f8}
+.bag-label{display:flex;justify-content:space-between;align-items:center;color:#ffd95a;font-weight:900}
+
+/* Tables */
+.table{width:100%;border-collapse:separate;border-spacing:0}
+.table th,.table td{border:1px solid var(--line);padding:.7rem;border-radius:8px;text-align:left}
+.table th{background:var(--blue-100)}
+
+/* Footer */
+footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted)}
+.sources{list-style:disc;padding-left:18px}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <div class="logoRow">
+      <img class="logo" src="assets/img/logo.jpg" alt="Hyvä Juttu logo"/>
+      <div>
+        <div class="siteName">HYVÄ JUTTU</div>
+        <div class="hook">Transforming every day shopping sustainably</div>
+      </div>
+    </div>
+    <nav class="links" aria-label="Sections">
+      <a href="#problem">Problem</a>
+      <a href="#solution">Solution</a>
+      <a href="#why">Why Jute</a>
+      <a href="#model">The Business Model</a>
+      <a href="#about">About us</a>
+      <a href="#pilot">Let’s Pilot</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div style="display:flex;align-items:center;gap:.6rem">
+      <a class="btn primary" href="#pilot">Start a pilot</a>
+      <button id="menuBtn" class="hamb" aria-expanded="false" aria-controls="mobileMenu" aria-label="Open menu">☰</button>
+    </div>
+  </div>
+  <div id="mobileMenu" class="wrap mobile">
+    <div class="grid" style="padding:10px 0">
+      <a class="btn" href="#problem">Problem</a>
+      <a class="btn" href="#solution">Solution</a>
+      <a class="btn" href="#why">Why Jute</a>
+      <a class="btn" href="#model">Business Model</a>
+      <a class="btn" href="#about">About us</a>
+      <a class="btn" href="#pilot">Let’s Pilot</a>
+      <a class="btn" href="#contact">Contact</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <!-- Hero -->
+  <section class="hero">
+    <div class="wrap grid g2" style="align-items:center">
+      <div class="reveal">
+        <span class="chip">Circular consumer-stage intervention • QR returns • Investor-grade data</span>
+        <h1>Replace plastic with jute totes and W-Cut bio bags — and prove the impact.</h1>
+        <p>We deploy <b>durable jute totes</b> with <b>€0.15 cashback</b> on returns and <b>W-Cut 100% biodegradable bags</b> for cases where disposables are essential. Returns feed repair/fibre-recycling and a simple dashboard.</p>
+        <div style="display:flex;gap:12px;margin-top:12px">
+          <a class="btn primary" href="#pilot">Pilot & invest</a>
+          <a class="btn ghost" href="#how">See the flow</a>
+        </div>
+        <p class="small muted" style="margin-top:8px">Key sources:
+          <a href="https://environment.ec.europa.eu/topics/plastics/plastic-bags_en" target="_blank" rel="noopener">EU Commission</a> ·
+          <a href="https://ec.europa.eu/eurostat/statistics-explained/index.php/Consumption_of_plastic_carrier_bags_-_estimates" target="_blank" rel="noopener">Eurostat</a> ·
+          <a href="https://orbit.dtu.dk/files/151577434/2018_Life_Cycle_Assessment_of_grocery_carrier_bags_Environmental_project_no._1985.pdf" target="_blank" rel="noopener">Danish EPA LCA</a> ·
+          <a href="https://www.fao.org/economic/futurefibres/fibres/jute/en/" target="_blank" rel="noopener">FAO: Jute</a>
+        </p>
+      </div>
+      <div class="reveal">
+        <figure class="device" id="heroDevice">
+          <img src="https://images.unsplash.com/photo-1592247350271-1790a2b9d3bb?q=80&w=1200&auto=format&fit=crop" alt="Jute tote"/>
+          <figcaption class="floating">Scan QR → Cashback</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- Problem -->
+  <section id="problem">
+    <div class="wrap">
+      <h2 class="reveal">Problem</h2>
+      <div class="grid g3">
+        <div class="card reveal">
+          <h3>Plastic pollution is costly</h3>
+          <p>Cleanup, health and ecosystem damage cost economies **billions** yearly; microplastics enter food chains and bodies.</p>
+          <p class="small"><a href="https://environment.ec.europa.eu/topics/plastics/plastic-bags_en" target="_blank">EU Commission — plastic bags policy</a></p>
+        </div>
+        <div class="card reveal">
+          <h3>Targets not yet met</h3>
+          <p>EU aims for ≤40 carrier bags per person by **31 Dec 2025**. Finland was ≈ **55 bags/person** in 2022.</p>
+          <p class="small"><a href="https://www.helsinkitimes.fi/finland/finland-news/domestic/25446-yle-finland-on-track-to-fall-short-with-effort-to-reduce-plastic-bag-use.html" target="_blank">Yle / Helsinki Times</a></p>
+        </div>
+        <div class="card reveal">
+          <h3>Cotton & paper aren’t silver bullets</h3>
+          <p>LCAs show cotton/paper need high reuse counts to break even vs plastic; real-world reuse is often lower.</p>
+          <p class="small"><a href="https://orbit.dtu.dk/files/151577434/2018_Life_Cycle_Assessment_of_grocery_carrier_bags_Environmental_project_no._1985.pdf" target="_blank">Danish EPA LCA (2018)</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Solution -->
+  <section id="solution">
+    <div class="wrap">
+      <h2 class="reveal">Solution</h2>
+      <div class="grid g3">
+        <article class="card reveal">
+          <h3>Jute tote: durable & circular</h3>
+          <p>1 jute tote can displace roughly **30–50** plastic carrier bags when reused and returned for repair or fibre-recycling.</p>
+          <p class="small">Context: <a href="https://www.fao.org/economic/futurefibres/fibres/jute/en/" target="_blank">FAO (jute)</a> · <a href="https://orbit.dtu.dk/files/151577434/2018_Life_Cycle_Assessment_of_grocery_carrier_bags_Environmental_project_no._1985.pdf" target="_blank">Danish EPA LCA</a></p>
+        </article>
+        <article class="card reveal">
+          <h3>W-Cut bio bag</h3>
+          <p>**100% biodegradable / compostable** checkout bags to replace plastic immediately while totes scale.</p>
+          <p class="small">Retail-ready sizes below.</p>
+        </article>
+        <article class="card reveal">
+          <h3>Consumer incentive</h3>
+          <p>Every return = **€0.15** cashback; customers tagged as **“Super Guardian of Earth”** in the app/receipt.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works (graphical) -->
+  <section id="how" class="how">
+    <div class="wrap">
+      <h2 class="reveal">How it works — from customer to circularity</h2>
+      <div class="howCanvas reveal">
+        <svg class="howSvg" viewBox="0 0 1100 300" aria-hidden="true">
+          <defs>
+            <linearGradient id="gradRun" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#7ee0a3"/><stop offset="100%" stop-color="#74c0fc"/></linearGradient>
+          </defs>
+          <path class="runner" d="M40 220 C 200 60, 380 60, 540 220 S 880 380, 1060 200"/>
+        </svg>
+        <div class="node" style="left:8px;top:190px"><div class="dot"></div><div class="lbl">Buy jute tote</div><div class="small muted">QR linked</div></div>
+        <div class="node" style="left:300px;top:70px"><div class="dot" style="background:var(--brandB)"></div><div class="lbl">Use & re-use</div><div class="small muted">At least 30–50 trips</div></div>
+        <div class="node" style="left:600px;top:216px"><div class="dot"></div><div class="lbl">Return</div><div class="small muted">Scan → **€0.15** cashback</div></div>
+        <div class="node" style="left:920px;top:140px"><div class="dot" style="background:var(--brandB)"></div><div class="lbl">Circularity</div><div class="small muted">Repair or fibre-recycle → next tote</div></div>
+      </div>
+      <p class="small muted">This reuse mapping creates shelf space for jute and steadily **reduces plastic dependency**, building a visible, investor-grade impact trail.</p>
+    </div>
+  </section>
+
+  <!-- W-Cut branded poster -->
+  <section id="wcut" class="poster">
+    <div class="wrap" style="padding:42px 0">
+      <div class="bag-label"><h3>W-Cut Bio Bags</h3><span class="badge">Hyvä Juttu branding</span></div>
+      <!-- Clean SVG — no external logos -->
+      <svg viewBox="0 0 1200 480" role="img" aria-label="Hyvä Juttu W-Cut bags">
+        <defs><linearGradient id="posterGrad" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#aef3c8"/><stop offset="100%" stop-color="#7ec8ff"/></linearGradient></defs>
+        <circle cx="600" cy="260" r="220" fill="rgba(126,224,163,.15)"/>
+        <!-- 18x15 -->
+        <g transform="translate(120,40)">
+          <text x="160" y="10" fill="#ffe08a" font-size="28" text-anchor="middle">18&quot; × 15&quot;</text>
+          <g transform="translate(40,30)">
+            <path d="M30,40 h220 v260 h-220 z M30,40 c0,-40 60,-40 80,0 v40 h-80 z M250,40 c0,-40 -60,-40 -80,0 v40 h80 z" fill="#f6f8f7" stroke="rgba(255,255,255,.4)" stroke-width="2"/>
+            <rect x="95" y="140" width="90" height="100" rx="8" fill="url(#posterGrad)" opacity=".85"/>
+            <text x="140" y="128" fill="#0b7a49" font-size="18" font-weight="700" text-anchor="middle">Hyvä Juttu</text>
+          </g>
+          <text x="160" y="360" fill="#ffe08a" font-size="28" text-anchor="middle" font-weight="800">3 kg</text>
+        </g>
+        <!-- 22x18 -->
+        <g transform="translate(470,10)">
+          <text x="160" y="10" fill="#ffe08a" font-size="30" text-anchor="middle">22&quot; × 18&quot;</text>
+          <g transform="translate(40,30)">
+            <path d="M30,40 h250 v320 h-250 z M30,40 c0,-46 68,-46 90,0 v46 h-90 z M280,40 c0,-46 -68,-46 -90,0 v46 h90 z" fill="#f6f8f7" stroke="rgba(255,255,255,.4)" stroke-width="2"/>
+            <rect x="110" y="170" width="100" height="120" rx="8" fill="url(#posterGrad)" opacity=".85"/>
+            <text x="160" y="150" fill="#0b7a49" font-size="20" font-weight="700" text-anchor="middle">Hyvä Juttu</text>
+          </g>
+          <text x="160" y="420" fill="#ffe08a" font-size="30" text-anchor="middle" font-weight="800">5 kg</text>
+        </g>
+        <!-- 24x21 -->
+        <g transform="translate(820,0)">
+          <text x="160" y="10" fill="#ffe08a" font-size="32" text-anchor="middle">24&quot; × 21&quot;</text>
+          <g transform="translate(40,30)">
+            <path d="M30,40 h290 v360 h-290 z M30,40 c0,-52 76,-52 100,0 v52 h-100 z M320,40 c0,-52 -76,-52 -100,0 v52 h100 z" fill="#f6f8f7" stroke="rgba(255,255,255,.4)" stroke-width="2"/>
+            <rect x="125" y="200" width="120" height="140" rx="10" fill="url(#posterGrad)" opacity=".85"/>
+            <text x="170" y="180" fill="#0b7a49" font-size="22" font-weight="700" text-anchor="middle">Hyvä Juttu</text>
+          </g>
+          <text x="160" y="450" fill="#ffe08a" font-size="32" text-anchor="middle" font-weight="800">8 kg</text>
+        </g>
+      </svg>
+      <p class="legend small">Retail sizes: 18×15 (3 kg), 22×18 (5 kg), 24×21 (8 kg). Fully brandable.</p>
+    </div>
+  </section>
+
+  <!-- Why Jute -->
+  <section id="why">
+    <div class="wrap">
+      <h2 class="reveal">Why Jute</h2>
+      <div class="grid g2">
+        <div class="card reveal">
+          <h3>Climate & biology</h3>
+          <ul class="small">
+            <li>Jute is a **fast-growing C3 plant**; cultivation sequesters CO₂ and releases O₂ during its short season.</li>
+            <li>Multiple sources (FAO, IJSG) note significant CO₂ absorption and O₂ release per hectare; exact figures vary by cultivar, yield and inputs.</li>
+            <li>Rain-fed in many regions → **low irrigation** vs cotton in arid zones.</li>
+          </ul>
+          <p class="small">Read more: <a href="https://www.fao.org/economic/futurefibres/fibres/jute/en/" target="_blank">FAO Future Fibres: Jute</a> · <a href="https://jute.org" target="_blank">International Jute Study Group (IJSG) archive</a></p>
+        </div>
+        <div class="card reveal">
+          <h3>Socio-economic upside</h3>
+          <ul class="small">
+            <li>Income for smallholders in developing countries; trade can act as **climate-positive demand** rather than distant compensation.</li>
+            <li>Durable jute totes create a **repairable asset**; worn units become **fibre feedstock** for new totes or board.</li>
+            <li>For Finland: import jute goods to **displace plastic** while exploring **domestic jute-processing** and fibre-based manufacturing jobs.</li>
+          </ul>
+        </div>
+      </div>
+      <p class="small muted">Strategic idea: channel part of climate-spend into **real demand for jute** (goods that displace plastics) rather than only offsets — building a scalable circular market.</p>
+    </div>
+  </section>
+
+  <!-- Business model -->
+  <section id="model">
+    <div class="wrap">
+      <h2 class="reveal">The Business Model (pilot → scale)</h2>
+      <div class="grid g2">
+        <div class="card reveal">
+          <h3>Unit economics (illustrative)</h3>
+          <table class="table small">
+            <tr><th>Item</th><th>Pilot price (€)</th><th>Notes</th></tr>
+            <tr><td>Jute tote (12–16 oz)</td><td>2.50–3.20</td><td>Wholesale; 10–15 kg load; 50–100+ reuses</td></tr>
+            <tr><td>Retail tote price</td><td>3.90–5.90</td><td>Retailer sets price; includes €0.15 return reserve</td></tr>
+            <tr><td>Gross margin / tote</td><td>≈ 1.00–2.40</td><td>Before logistics & cashback</td></tr>
+            <tr><td>W-Cut bio bag</td><td>0.05–0.10</td><td>Size dependent (18×15 / 22×18 / 24×21)</td></tr>
+          </table>
+          <p class="small muted">Figures are conservative placeholders for investor discussion; replace with your supplier quotes and logistics. LCA & policy context: EU Commission, Danish EPA LCA, FAO.</p>
+        </div>
+        <div class="card reveal">
+          <h3>Revenue streams</h3>
+          <ul class="small">
+            <li><b>Product</b>: tote wholesale margin + W-Cut supply</li>
+            <li><b>Service</b>: reverse logistics, repair, fibre-recycling</li>
+            <li><b>Data</b>: monthly dashboard/API (returns, CO₂ estimates)</li>
+            <li><b>Marketing</b>: “Super Guardian of Earth” loyalty layer</li>
+          </ul>
+          <h3>Scale math (example)</h3>
+          <p class="small">If 5 pilot stores sell 1,000 totes each & 50,000 W-Cut bags/month: you displace **150k–250k** plastic bags over the first 6–8 months (30–50 per tote), while building verified return data.</p>
+        </div>
+      </div>
+      <p class="small muted"><b>Sustainability reward:</b> partners can be publicly recognised as **Finland First** in plastic-free daily shopping — a catalyst for a **plastic-free Nordic**.</p>
+    </div>
+  </section>
+
+  <!-- Products (totes + W-Cut list) -->
+  <section id="products">
+    <div class="wrap">
+      <h2 class="reveal">Products</h2>
+      <div class="grid g3">
+        <article class="card product reveal"><img src="https://images.unsplash.com/photo-1555529771-35a38fb95e29?q=80&w=1200&auto=format&fit=crop" alt="Jute tote natural"><h3>Jute Tote — Natural</h3><p class="small muted">38×42×15 cm · 14 oz · unlaminated</p></article>
+        <article class="card product reveal"><img src="https://images.unsplash.com/photo-1585386959984-a41552231693?q=80&w=1200&auto=format&fit=crop" alt="Jute tote long handle"><h3>Jute Tote — Long Handle</h3><p class="small muted">40×36×18 cm · 12 oz · long handles</p></article>
+        <article class="card product reveal"><img src="https://images.unsplash.com/photo-1551776051-8c5fbecf7e4b?q=80&w=1200&auto=format&fit=crop" alt="Jute shopper reinforced"><h3>Jute Shopper — Reinforced</h3><p class="small muted">45×35×20 cm · 16 oz · reinforced base</p></article>
+      </div>
+      <h3 class="reveal" style="margin-top:24px">W-Cut bio bags (Hyvä Juttu logo)</h3>
+      <div class="grid g3">
+        <article class="card reveal"><h3>18&quot; × 15&quot;</h3><p class="small muted">Load guide: 3 kg</p><p class="small">Home-compostable & biodegradable</p></article>
+        <article class="card reveal"><h3>22&quot; × 18&quot;</h3><p class="small muted">Load guide: 5 kg</p><p class="small">Home-compostable & biodegradable</p></article>
+        <article class="card reveal"><h3>24&quot; × 21&quot;</h3><p class="small muted">Load guide: 8 kg</p><p class="small">Home-compostable & biodegradable</p></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Let's Pilot (explicit order ask) -->
+  <section id="pilot">
+    <div class="wrap">
+      <h2 class="reveal">Let’s Pilot</h2>
+      <div class="grid g2">
+        <div class="card reveal">
+          <h3>Concrete pilot ask</h3>
+          <ul class="small">
+            <li><b>5,000 pcs</b> jute totes (12–16 oz, mixed sizes)</li>
+            <li><b>50,000 pcs</b> W-Cut bio bags (18×15, 22×18, 24×21)</li>
+            <li>We import & deliver; you deploy in your Nordic channels.</li>
+            <li>We run returns/repair/fibre and measure: <b>buying</b>, <b>repurposing</b>, <b>consumer behaviour</b>.</li>
+          </ul>
+          <p class="small muted">Outcome: first-mover status as **Nordics leader** replacing plastic bags; public recognition as **Sustainable Eco-Hero**.</p>
+        </div>
+        <div class="card reveal">
+          <h3>KPIs we publish</h3>
+          <ul class="small">
+            <li>Return rate (%), average reuses per tote</li>
+            <li>Plastic bags displaced (per store & total)</li>
+            <li>CO₂-equivalent estimates (method note published)</li>
+          </ul>
+          <p class="small">We’ll co-author a brief with your logo after 60–90 days.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <div class="wrap">
+      <h2 class="reveal">About us</h2>
+      <div class="grid g2">
+        <article class="card" style="display:grid;grid-template-columns:120px 1fr;gap:16px;align-items:center">
+          <img class="logo" src="assets/img/founder.jpg" alt="Shekh G. Rahman">
+          <div>
+            <h3><a href="https://www.linkedin.com/in/shekh-g-rahman/" target="_blank" rel="noopener">Shekh G. Rahman</a></h3>
+            <p class="small muted">Founder — sustainability & business analysis. Partnerships and circular pilots.</p>
+            <p class="small">Email: <a href="mailto:grahmanmba@gmail.com">grahmanmba@gmail.com</a> · Phone: <a href="tel:+358417275352">+358 41 727 5352</a></p>
+          </div>
+        </article>
+        <article class="card" style="display:grid;grid-template-columns:120px 1fr;gap:16px;align-items:center">
+          <img class="logo" src="assets/img/cofounder.jpg" alt="Nilufa Yeasmin">
+          <div>
+            <h3><a href="https://www.linkedin.com/in/nilufa-yeasmin-digital-marketing-specialist/" target="_blank" rel="noopener">Nilufa Yeasmin</a></h3>
+            <p class="small muted">Co-founder — sustainability-focused marketing & analytics. Consumer adoption & reporting.</p>
+          </div>
+        </article>
+      </div>
+      <p class="small">Our dream: every Nordic shopper carries **jute totes** and W-Cut bio bags replace plastic at checkout.  
+      Our mission: remove **1,000,000** plastic bags from Finland’s daily shopping and redirect value into a **Finnish jute-processing** ecosystem.</p>
+      <p class="small muted"><i>Final line:</i> <b>The leader of sustainability will be the leader of plastic-free ecology. Let’s build a breathable earth for our future generations.</b></p>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <div class="wrap">
+      <h2 class="reveal">Contact</h2>
+      <div class="card reveal">
+        <p class="small">Email: <a href="mailto:grahmanmba@gmail.com">grahmanmba@gmail.com</a> · Phone: <a href="tel:+358417275352">+358 41 727 5352</a> · Tampere, Finland</p>
+        <h3 style="margin-top:10px">Data sources</h3>
+        <ul class="sources small">
+          <li><a href="https://environment.ec.europa.eu/topics/plastics/plastic-bags_en" target="_blank" rel="noopener">EU Commission — plastic bags policy & targets</a></li>
+          <li><a href="https://ec.europa.eu/eurostat/statistics-explained/index.php/Consumption_of_plastic_carrier_bags_-_estimates" target="_blank" rel="noopener">Eurostat — consumption estimates</a></li>
+          <li><a href="https://orbit.dtu.dk/files/151577434/2018_Life_Cycle_Assessment_of_grocery_carrier_bags_Environmental_project_no._1985.pdf" target="_blank" rel="noopener">Danish EPA — LCA (2018)</a></li>
+          <li><a href="https://www.fao.org/economic/futurefibres/fibres/jute/en/" target="_blank" rel="noopener">FAO — Future Fibres: Jute</a></li>
+          <li><a href="https://jute.org" target="_blank" rel="noopener">International Jute Study Group (archive)</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap" style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+    <div class="logoRow">
+      <img class="logo" src="assets/img/logo.jpg" alt="Hyvä Juttu logo small" style="width:40px;height:40px"/>
+      <div class="siteName" style="font-size:1.5rem">HYVÄ JUTTU</div>
+    </div>
+    <div class="small muted">© Hyvä Juttu — circular tote & bio bag program</div>
+    <div class="small"><a href="#pilot">Pilot</a> · <a href="#contact">Contact</a></div>
+  </div>
+</footer>
+
+<script>
+// Mobile menu
+const btn=document.getElementById('menuBtn'); const mob=document.getElementById('mobileMenu');
+if(btn&&mob){btn.addEventListener('click',()=>{mob.classList.toggle('open');btn.setAttribute('aria-expanded',String(mob.classList.contains('open')))});}
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{const id=a.getAttribute('href');if(id.length>1){e.preventDefault();document.querySelector(id)?.scrollIntoView({behavior:'smooth'});}}));
+// Reveal on scroll
+const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');io.unobserve(x.target);}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+// Parallax
+const device=document.getElementById('heroDevice'); let ticking=false;
+function onScroll(){if(!ticking){requestAnimationFrame(()=>{const y=window.scrollY||0; const d=Math.min(20,y*0.05); if(device) device.style.setProperty('--parallax',`${d}px`); ticking=false;}); ticking=true;}}
+window.addEventListener('scroll',onScroll,{passive:true});
+</script>
+</body>
+</html>
